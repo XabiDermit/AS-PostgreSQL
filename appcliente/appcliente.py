@@ -1,15 +1,38 @@
-import psycopg2 as postgres
+import psycopg2
+#import sys
 
-conexion = postgres.connect(database="postgres", user='postgres', password='xabi_as_postgres', host="localhost", port=5432)
+#print(sys.argv[1])
 
-cursor = connection.cursor()
+try:
 
-sentencia_sql ="CREATE TABLE pruebas_as (id varchar(50) PRIMARY KEY, nombre varchar(50) UNIQUE NOT NULL);"
+	#conexion con la base de datos
+	conexion = psycopg2.connect(database="xabi_as", user="postgres", password="password", host="0.0.0.0", port="5432")
 
-cursor.execute(sentencia_sql)
+	#creamos un cursor para ejecutar querys
+	cursor = conexion.cursor()
 
-#para hacer pruebas
+	print("Conexión correcta.", "\n")
+	print("Informacion sobre la conexión: ")
+	print(conexion.get_dsn_parameters(), "\n")
 
-record = cursor.fetchall()
-print ("Info:" , record)
+	#creamos una tabla, añadimos valores y hacemos una consulta select
+	cursor.execute("CREATE TABLE pruebas_as (id varchar(50) PRIMARY KEY, nombre varchar(50) UNIQUE NOT NULL);")
+	cursor.execute("INSERT INTO pruebas_as (id,nombre) VALUES ('1234', 'xabi');")
+	cursor.execute("SELECT * from pruebas_as;")
+
+	#comprobamos que ha funcionado
+	record = cursor.fetchall()
+	print ("Info:" , record)
+
+#excepcion si sale mal la conexión
+except (Exception, psycopg2.Error) as error:
+	print("Error en la conexion: ", error)
+
+finally: 
+
+	#si ha abierto la conexion la cerramos
+	if (conexion):
+		cursor.close()
+		conexion.close()
+		print("Conexion cerrada")
 
