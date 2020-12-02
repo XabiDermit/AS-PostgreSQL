@@ -1,0 +1,22 @@
+version: "3"
+services: 
+    dbpostgre:
+        image: 'postgres'
+        environment:
+                POSTGRES_USER: postgres
+                POSTGRES_PASSWORD: xabi_as_postgres
+                POSTGRES_DB: xabi_as
+                POSTGRES_HOST: dbpostgre
+
+        ports: 
+                - "5432:5432"
+
+    appcliente: 
+        build: .appcliente/
+        environment:
+                POSTGRES_USER: postgres
+                POSTGRES_PASSWORD: xabi_as_postgres
+                POSTGRES_DB: xabi_as
+                POSTGRES_HOST: dbpostgre
+        depends_on: 
+                - dbpostgre

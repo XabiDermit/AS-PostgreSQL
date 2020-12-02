@@ -7,10 +7,10 @@ WORKDIR /usr/scr/app
 #instalamos las dependencias que necesite nuestre programa
 RUN pip install psycopg2
 #Copiamos al directorio de trabajo el fichero .py que vamos a ejecutar 
-COPY appcliente.py .
+COPY appcliente.py ./
 
 #Definimos el comando de arranque
-CMD ["python", "./appcliente.py", "hola"]
+CMD ["python", "./appcliente.py"]
 
 
 
