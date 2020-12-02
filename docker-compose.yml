@@ -4,19 +4,19 @@ services:
         image: 'postgres'
         environment:
                 POSTGRES_USER: postgres
-                POSTGRES_PASSWORD: xabi_as_postgres
-                POSTGRES_DB: xabi_as
+                POSTGRES_PASSWORD: password
+                POSTGRES_DB: postges
                 POSTGRES_HOST: dbpostgre
 
         ports: 
                 - "5432:5432"
 
     appcliente: 
-        build: .appcliente/
+        build: ./appcliente/
         environment:
                 POSTGRES_USER: postgres
-                POSTGRES_PASSWORD: xabi_as_postgres
-                POSTGRES_DB: xabi_as
+                POSTGRES_PASSWORD: password
+                POSTGRES_DB: postgres
                 POSTGRES_HOST: dbpostgre
         depends_on: 
                 - dbpostgre

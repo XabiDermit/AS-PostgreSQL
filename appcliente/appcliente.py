@@ -6,7 +6,7 @@ import psycopg2
 try:
 
 	#conexion con la base de datos
-	conexion = psycopg2.connect(database="xabi_as", user="postgres", password="password", host="0.0.0.0", port="5432")
+	conexion = psycopg2.connect(database="postgres", user="postgres", password="password", host="dbpostgre", port="5432")
 
 	#creamos un cursor para ejecutar querys
 	cursor = conexion.cursor()
