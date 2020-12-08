@@ -1,8 +1,0 @@
-psql -c "CREATE USER xabiadmin WITH PASSWORD 'xabi1234';"#!/usr/bin/env bash
-whoami
-sudo -i -u postgres bash << EOF
-echo "In"
-whoami
-EOF
-echo "Out"
-whoami
