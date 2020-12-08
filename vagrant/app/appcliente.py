@@ -3,7 +3,7 @@ import psycopg2
 try:
 
 	#conexion con la base de datos
-	conexion = psycopg2.connect(database="postgres", user="postgres", password="password", host="dbpostgre", port="5432")
+	conexion = psycopg2.connect(database="postgres", user="xabiadmin", password="xabi1234", host="localhost", port="5432")
 
 	#creamos un cursor para ejecutar querys
 	cursor = conexion.cursor()
@@ -38,4 +38,3 @@ except (Exception, psycopg2.Error) as error:
 
 
 		
-
